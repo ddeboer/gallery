@@ -1,0 +1,8 @@
+cope_gallery:
+    resource: "@CopeGalleryBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+_imagine:
+    resource: .
+    type:     imagine

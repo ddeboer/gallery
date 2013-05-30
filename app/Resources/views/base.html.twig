@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        {% stylesheets
+        %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet">
+        {% endstylesheets %}
+        <link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+        <link href="/css/bootstrap-responsive.min.css" type="text/css" rel="stylesheet">
+        <link href="/css/gallery.css" type="text/css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+        {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

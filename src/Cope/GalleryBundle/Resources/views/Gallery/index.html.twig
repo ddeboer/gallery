@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h1>Galerij</h1>
+
+<div class="row-fluid">
+    <div class="span8"> </div>
+    <div class="span4">
+        <div class="btn-group">
+        {% for i in [12, 16, 25] %}
+            <a href="{{ url('cope_gallery', { 'page': 1, 'perPage': i })}}" class="btn {% if i == perPage %}active{% endif %}">{{ i }}</a>
+        {% endfor %}
+        </div> &nbsp;afbeeldigen per pagina
+    </div>
+</div>
+
+<ul class="thumbnails">
+{% for file in files %}        
+    <li class="span2">
+    <a href="{{ path('cope_gallery_image', { 'name': file.relativePathname }) }}" class="thumbnail">
+      <img src="{{ ('/images/' ~ file.relativePathname) | apply_filter('thumb') }}" alt="{{ file.relativePathname }}">
+    </a>
+  </li>
+{% endfor %}
+</ul>
+
+<div class="pagination">
+  <ul>
+{% if page != 1 %}
+    <li><a href="{{ url('cope_gallery', { 'page': page-1, 'perPage': perPage })}}">Vorige</a></li>
+{% endif %}
+
+{% for i in range(1, numOfPages) %}
+    <li {% if i == page %}class="active"{% endif %}><a href="{{ url('cope_gallery', { 'page': i, 'perPage': perPage })}}">{{ i }}</a></li>
+{% endfor %}
+
+{% if page != numOfPages %}
+    <li><a href="{{ url('cope_gallery', { 'page': page+1, 'perPage': perPage })}}">Volgende</a></li>
+{% endif %}
+  </ul>
+</div>
+
+{% endblock body %}

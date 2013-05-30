@@ -1,0 +1,23 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h1>Galerij</h1>
+
+<div class="thumbnail">
+    <img src="{{ '/images/' ~ current.relativePathname }}" />
+</div>
+
+<div class="pagination">
+  <ul>
+{% if previous is not null %}
+    <li><a href="{{ url('cope_gallery_image', { 'name': previous.relativePathname })}}">Vorige</a></li>
+{% endif %}
+    <li><a href="{{ url('cope_gallery')}}">Overzicht</a></li>
+{% if next %}
+    <li><a href="{{ url('cope_gallery_image', { 'name': next.relativePathname })}}">Volgende</a></li>
+{% endif %}
+  </ul>
+</div>
+
+{% endblock body %}
